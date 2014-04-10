@@ -4,15 +4,13 @@ Created on Thu Apr 03 15:50:12 2014
 
 @author: hannah
 """
-import pandas as pd
-from pandas.tools.plotting import lag_plot
+import datetime
+import numpy as np
+import scipy.stats as st
 
 from matplotlib import figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
-
-import numpy as np
-import scipy.stats as st
 
 DCOLOR = "#336699"
 def run_sequence_plot(ax, dates, data):
@@ -81,19 +79,19 @@ def four_plot(dates, values):
     ax4 = fig.add_subplot(2,2,4)
     norm_prob(ax4, values)
     fig.tight_layout()
-    canvas.print_figure('fplot.png', bbox_inches='tight', pad_inches=0.1)
+    canvas.print_figure('../figures/fplot.png', bbox_inches='tight', pad_inches=0.1)
     
     
     
 if __name__ == '__main__':
-    filename = "delta_byName_time_series.v2.pkl"
-    df = pd.load(filename)
-    data = df['precip']['Amazon']
     
-    runseq= ['runseq.png', run_sequence_plot, [data.index, data.values]]
-    lag = ['lag.png', lag_plot, [data.values]]
-    hist = ['hist.png', histogram, [data.values]]    
-    norm = ['norm.png', norm_prob, [data.values]]
+    ndays = 1000
+    index = [datetime.datetime.today() - datetime.timedelta(days=n) for n in range(ndays)][::-1]
+    values = np.random.rand((ndays))
+    runseq= ['runseq', run_sequence_plot, [index, values]]
+    lag = ['lag', lag_plot, [values]]
+    hist = ['hist', histogram, [values]]    
+    norm = ['norm', norm_prob, [values]]
     runs = [runseq, lag, hist, norm]
     for (fn, f, args) in runs:
         if 'runseq' in fn: 
@@ -104,6 +102,7 @@ if __name__ == '__main__':
         canvas = FigureCanvas(fig)
         ax = fig.add_subplot(1,1,1)
         f(ax, *args)
-        canvas.print_figure(fn, bbox_inches='tight', pad_inches=0.1)
+        canvas.print_figure("../figures/{}.png".format(fn), 
+		                     bbox_inches='tight', pad_inches=0.1)
         
-    four_plot(data.index, data.values)
+    four_plot(index, values)
