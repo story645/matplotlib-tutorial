@@ -12,8 +12,8 @@ fig = figure.Figure()
 canvas = FigureCanvas(fig)
 
 ax = fig.add_subplot(1,1,1)
-for i in range(1,100):
-	ax.scatter(i,i,s=i, color='y',edgecolor='k')
+i = range(1,100)
+ax.scatter(i,i,s=i, color='y',edgecolor='k')
 
 
 ax.set_ylim((0,100))

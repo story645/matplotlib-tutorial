@@ -25,7 +25,8 @@ cmap = mcm.spring
 norm = mcolors.BoundaryNorm(np.arange(11), cmap.N)
 
 ax = fig.add_subplot(1,1,1)
-scat = ax.scatter(a,b,c=c, s=(d+10)*50, cmap=cmap,norm=norm)
+scat = ax.scatter(a,b,c=c, s=(d+10)*50, 
+                  cmap=cmap,norm=norm)
 fig.colorbar(scat, ax=ax, fraction=.45)
 
 canvas.print_figure('../figures/cmapbubble.png', 

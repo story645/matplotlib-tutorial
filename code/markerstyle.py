@@ -3,6 +3,7 @@ Example of matplotlib markers
 http://matplotlib.org/api/markers_api.html
 """
 import matplotlib
+import matplotlib.pyplot as plt
 from matplotlib import figure
 from matplotlib.backends.backend_agg import (
 FigureCanvasAgg as FigureCanvas)
@@ -13,6 +14,7 @@ fig = figure.Figure(figsize=(12,6))
 
 canvas = FigureCanvas(fig)
 
+fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
 mlist = matplotlib.markers.MarkerStyle.markers.keys()
 print mlist
@@ -33,8 +35,10 @@ ax.set_xlim((498,535))
 
 ax.set_xticks([])
 ax.set_yticks([])
+plt.show()
 canvas.print_figure('../figures/markerstyle.png', 
 		facecolor='lightgray')
+
 """	
 The marker can also be a tuple (numsides, style, angle), which will create a custom, regular symbol.
 
@@ -52,3 +56,4 @@ The marker can also be a tuple (numsides, style, angle), which will create a cus
         the angle of rotation of the symbol, in degrees
 
 """
+

@@ -14,7 +14,7 @@ FigureCanvasAgg as FigureCanvas)
 import matplotlib.ticker as mticker
 import matplotlib.dates as mdates
 
-fig = figure.Figure()
+fig = figure.Figure(figsize=(20,10))
 canvas = FigureCanvas(fig)
 
 ax = fig.add_subplot(1,1,1)

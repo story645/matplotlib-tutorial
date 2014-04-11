@@ -51,7 +51,7 @@ def histogram(ax,data):
     ax.set_ylabel('Number of Observations') 
     sp = 3
     _, bins = np.histogram(data)
-    ax.hist(data, color=DCOLOR, edgecolor='k', 
+    ax.hist(data, color=DCOLOR, edgecolor='k',
             range=(bins[0], bins[sp]))
     ax.set_xlim((bins[0], bins[sp]))
     return

@@ -13,7 +13,7 @@ canvas = FigureCanvas(fig)
 
 ax = fig.add_subplot(1,1,1)
 #matplotlib can take any HTMLcolor
-ax.scatter(.5, .5, color='#8ED9E1', s=500)
+ax.scatter(.5, .5, color='#77F973', s=500)
 ax.set_xlim((0,1))
 ax.set_ylim((0,1))
 canvas.print_figure('../figures/pointcolor.png', 
