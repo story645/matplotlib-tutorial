@@ -1,5 +1,7 @@
 """Simple gridspec example
 
+http://matplotlib.org/users/gridspec.html
+"""
 import matplotlib.gridspec as gridspec
 
 fig = plt.figure()
